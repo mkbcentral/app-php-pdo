@@ -1,0 +1,77 @@
+<?php
+    require "connexion.php";
+
+    $stmt=$pdo->query('select * from users');
+    $rows=$stmt->fetchAll();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App1</title>
+    <style>
+        body{
+            margin-left: 50px;
+            margin-right: 50px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        table,th,td{
+            border: solid 1px black;
+        }
+        form{
+            border: solid 1px black;
+            padding:10px;
+            margin-bottom: 40px;
+            width: 200px;
+        }
+        label{
+            margin-top: 10px;
+        }
+        button{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div>
+        <form action="">
+            <div>
+                <label for="name">Non de l'utilisateur</label><br>
+                <input type="text">
+            </div>
+            <div>
+                <label for="name">Email</label><br>
+                <input type="text">
+            </div>
+            <div>
+                <label for="name">Téléphone</label><br>
+                <input type="text">
+            </div>
+            <div>
+                <button type="submit">Sauvegarder</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </thead>
+            <tbody>
+                <?php foreach ($rows as $key => $row) {?>
+                    <tr>
+                        <td><?php echo $row['name'] ?></td>
+                        <td><?php echo $row['email'] ?></td>
+                        <td><?php echo $row['phone'] ?></td>
+                    </tr>
+                <?php }?>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
